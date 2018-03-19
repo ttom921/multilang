@@ -7,6 +7,7 @@ using System.Linq;
 using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace MultiLangConvert
 {
@@ -46,8 +47,15 @@ namespace MultiLangConvert
                 Dictionary<string, string> dclang = new Dictionary<string, string>();
                 foreach (var data in list)
                 {
-                    dclang.Add(data.Key, data.Strings[lang]);
-
+                    try
+                    {
+                        dclang.Add(data.Key, data.Strings[lang]);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message+" key=>" + data.Key + " data=>"+ data.Strings[lang]);
+                        throw ex;
+                    }
                 }
                 string json = JsonConvert.SerializeObject(dclang, Formatting.Indented);
                 //write string to file
