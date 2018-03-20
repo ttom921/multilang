@@ -68,10 +68,18 @@ namespace MultiLangConvert
         /// </summary>
         /// <param name="list"></param>
         /// <param name="langs"></param>
-        public void GenResfile(List<ResxStrings> list, List<string> langs)
+        public void GenResfile(List<ResxStrings> list, List<string> langs,string pattern= "Resources",bool isCore=false)
         {
             string path = System.IO.Directory.GetCurrentDirectory();
-            path = Path.Combine(path, @"data\resdata");
+            if(isCore==true)
+            {
+                path = Path.Combine(path, @"data\resdata\core");
+            }
+            else
+            {
+                path = Path.Combine(path, @"data\resdata\mvc");
+            }
+            
             if (!Directory.Exists(path))
             {
                 Directory.CreateDirectory(path);
@@ -81,10 +89,31 @@ namespace MultiLangConvert
                 Directory.Delete(path, true);
                 Directory.CreateDirectory(path);
             }
-            string pattern = "Resources";
             foreach (string lang in langs)
             {
-                string resxPath = Path.Combine(path,pattern + (lang != "DEFAULT" ? "." + lang : string.Empty) + ".resx");
+                string resxPath = "";
+                if(isCore)
+                {
+                    resxPath = Path.Combine(path, pattern + (lang != "DEFAULT" ? "." + lang : string.Empty) + ".resx");
+                }
+                else
+                {
+                    string mylang = lang;
+                    if (mylang == "en-US")
+                    {
+                        mylang = "en-us";
+                    }
+                    if (mylang == "zh-Hant-TW")
+                    {
+                        mylang = "zh-tw";
+                    }
+                    if (mylang == "zh-Hans-CN")
+                    {
+                        mylang = "zh-cn";
+                    }
+                    resxPath = Path.Combine(path, pattern + (mylang != "DEFAULT" ? "." + mylang : string.Empty) + ".resx");
+                }
+               
                 using (ResXResourceWriter rsxw = new ResXResourceWriter(resxPath))
                 {
                     foreach (var data in list)

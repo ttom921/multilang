@@ -44,9 +44,13 @@ namespace MultiLangConvert
             try
             {
                 var retdata = ConvertHelp.Instance.ReadExcelData(textblock_filename.Text);
-
-                ConvertHelp.Instance.GenResfile(retdata.Item1, retdata.Item2);
                 ConvertHelp.Instance.GenJsonFile(retdata.Item1, retdata.Item2);
+                //轉mvc
+                ConvertHelp.Instance.GenResfile(retdata.Item1, retdata.Item2);
+                //轉core
+                ConvertHelp.Instance.GenResfile(retdata.Item1, retdata.Item2, "SharedResource",true);
+               
+                
                 MessageBox.Show("轉換成功");
             }
             catch (Exception ex)
