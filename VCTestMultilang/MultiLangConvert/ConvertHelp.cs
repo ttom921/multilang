@@ -92,27 +92,17 @@ namespace MultiLangConvert
             foreach (string lang in langs)
             {
                 string resxPath = "";
-                if(isCore)
-                {
-                    resxPath = Path.Combine(path, pattern + (lang != "DEFAULT" ? "." + lang : string.Empty) + ".resx");
-                }
-                else
-                {
-                    string mylang = lang;
-                    if (mylang == "en-US")
-                    {
-                        mylang = "en-us";
-                    }
-                    if (mylang == "zh-Hant-TW")
-                    {
-                        mylang = "zh-tw";
-                    }
-                    if (mylang == "zh-Hans-CN")
-                    {
-                        mylang = "zh-cn";
-                    }
-                    resxPath = Path.Combine(path, pattern + (mylang != "DEFAULT" ? "." + mylang : string.Empty) + ".resx");
-                }
+                string mylang = maptowindlang(lang);
+                resxPath = Path.Combine(path, pattern + (mylang != "DEFAULT" ? "." + mylang : string.Empty) + ".resx");
+                //if (isCore)
+                //{
+                //    resxPath = Path.Combine(path, pattern + (lang != "DEFAULT" ? "." + lang : string.Empty) + ".resx");
+                //}
+                //else
+                //{
+                   
+                //    //resxPath = Path.Combine(path, pattern + (lang != "DEFAULT" ? "." + lang : string.Empty) + ".resx");
+                //}
                
                 using (ResXResourceWriter rsxw = new ResXResourceWriter(resxPath))
                 {
@@ -127,7 +117,23 @@ namespace MultiLangConvert
                 }
             }
         }
-
+        string maptowindlang(string orglang)
+        {
+            string mylang = orglang;
+            if (mylang == "en-US")
+            {
+                mylang = "en-us";
+            }
+            if (mylang == "zh-Hant-TW")
+            {
+                mylang = "zh-tw";
+            }
+            if (mylang == "zh-Hans-CN")
+            {
+                mylang = "zh-cn";
+            }
+            return mylang;
+        }
         public Tuple<List<ResxStrings>, List<string>> ReadExcelData(string xlsxPath)
         {
             var list = new List<ResxStrings>();
