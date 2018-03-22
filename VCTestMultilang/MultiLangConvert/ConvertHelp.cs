@@ -152,12 +152,12 @@ namespace MultiLangConvert
                 {
                     ResxStrings data = new ResxStrings()
                     {
-                        Key = sht.Cell(row, 1).Value.ToString(),
-                        Comment = sht.Cell(row, 2).Value.ToString()
+                        Key = sht.Cell(row, 1).Value.ToString().Trim(),
+                        Comment = sht.Cell(row, 2).Value.ToString().Trim()
                     };
                     for (int i = 0; i < langs.Count; i++)
                         data.Strings.Add(langs[i],
-                            sht.Cell(row, i + 3).Value.ToString());
+                            sht.Cell(row, i + 3).Value.ToString().Trim());
                     list.Add(data);
                     row++;
                 }
