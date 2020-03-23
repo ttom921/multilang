@@ -1,0 +1,19 @@
+<mat-card class="mat-elevation-z2">
+  <mat-card-header>
+    將tw.json轉成excel檔
+  </mat-card-header>
+  <mat-card-content>
+    <input type="file" (change)="onFileJsonChange($event)" accept=".json" />
+    <button mat-raised-button color="primary" [disabled]="flatjson!=null ? 'false':'true'" (click)="btnJsonToExcel($event)">下載</button>
+  </mat-card-content>
+</mat-card>
+<mat-card class="mat-elevation-z2">
+  <mat-card-header>
+    將excel轉成多國語言
+  </mat-card-header>
+  <mat-card-content>
+    <input type="file" (change)="onFileExcelChange($event)" />
+  </mat-card-content>
+</mat-card>
+
+<router-outlet></router-outlet>
