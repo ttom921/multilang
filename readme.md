@@ -147,7 +147,7 @@ excel的結構
 
 ## 參考資料
 
-
+[【Angular】ngx-translate 多語系實務應用](https://edwardzou.blogspot.com/2019/01/ngx-translate.html)
 
 [Fastest way to flatten / un-flatten nested JSON objects](https://stackoverflow.com/questions/19098797/fastest-way-to-flatten-un-flatten-nested-json-objects)
 
