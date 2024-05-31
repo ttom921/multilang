@@ -1,6 +1,5 @@
 import { NgModule, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DomSanitizer, BrowserModule } from '@angular/platform-browser';
 // Angular Material 設定，要先加入 BrowserAnimationsModule
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // Angular Material Module List
@@ -27,7 +26,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTreeModule } from '@angular/material/tree';
-// Buttons & Indicators
+//Buttons & Indicators
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatBadgeModule } from '@angular/material/badge';
@@ -35,8 +34,8 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { MatRippleModule } from '@angular/material/core';
-// Popups & Modals
+import { DateAdapter, MatNativeDateModule, MatRippleModule } from '@angular/material/core';
+//Popups & Modals
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -51,12 +50,12 @@ import { MatTableModule } from '@angular/material/table';
 import { A11yModule } from '@angular/cdk/a11y';
 import { BidiModule } from '@angular/cdk/bidi';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { LayoutModule } from '@angular/cdk/layout';
+//import { LayoutModule } from '@angular/cdk/layout';
 import { ObserversModule } from '@angular/cdk/observers';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { PlatformModule } from '@angular/cdk/platform';
 import { PortalModule } from '@angular/cdk/portal';
-import { ScrollDispatchModule } from '@angular/cdk/scrolling';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 import { TextFieldModule } from '@angular/cdk/text-field';
 // Components
 import { CdkStepperModule } from '@angular/cdk/stepper';
@@ -65,10 +64,16 @@ import { CdkTreeModule } from '@angular/cdk/tree';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 //flex-layout
-import { FlexLayoutModule } from '@angular/flex-layout';
-//
+//import { FlexLayoutModule } from '@angular/flex-layout';
+import { DomSanitizer } from '@angular/platform-browser';
 //import { LeafletModule } from '@asymmetrik/ngx-leaflet';
-//import { LeafletMarkerClusterModule } from '@asymmetrik/ngx-leaflet-markercluster';
+//import { TranslateModule } from '@ngx-translate/core';
+//import { EqualValidator } from 'src/app/_common/_directive/equal-validator.directive';
+//import { filterByCarUId, filterByName } from 'src/app/_common/dual-list-box/swap-list.pipe';
+//import { IntersectionObserverDirective } from 'src/app/_common/_directive/intersection-observer.directive';
+//import { CustomDateAdapter } from 'src/app/_helpers/custom-date-adapter';
+//import { BubblePaginationDirective } from 'src/app/_common/_directive/bubble-pagination.directive';
+//import { NgxMatDatetimePickerModule, NgxMatNativeDateModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';';
 @NgModule({
   declarations: [],
   imports: [
@@ -78,7 +83,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     //BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    FlexLayoutModule,
+    //FlexLayoutModule,
     //LeafletModule,
     //LeafletMarkerClusterModule,
   ],
@@ -91,7 +96,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     ReactiveFormsModule,
     MatAutocompleteModule,
     MatCheckboxModule,
-    MatDatepickerModule,
     MatFormFieldModule,
     MatInputModule,
     MatRadioModule,
@@ -117,6 +121,11 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatProgressSpinnerModule,
     MatProgressBarModule,
     MatRippleModule,
+    //日曆時間元件
+    //NgxMatTimepickerModule,
+    //NgxMatDatetimePickerModule,
+    //NgxMatNativeDateModule,
+    //日曆時間元件
     MatBottomSheetModule,
     MatDialogModule,
     MatSnackBarModule,
@@ -127,19 +136,24 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     A11yModule,
     BidiModule,
     DragDropModule,
-    LayoutModule,
+    //FlexLayoutModule,
     ObserversModule,
     OverlayModule,
     PlatformModule,
     PortalModule,
-    ScrollDispatchModule,
+    ScrollingModule,
     TextFieldModule,
     CdkStepperModule,
     CdkTableModule,
     CdkTreeModule,
-    FlexLayoutModule,
+    //FlexLayoutModule,
+    //TranslateModule,
     //LeafletModule,
-    //LeafletMarkerClusterModule,
+    //filterByCarUId,
+    //filterByName,
+    //EqualValidator,
+    //IntersectionObserverDirective,
+    //BubblePaginationDirective,
   ]
 })
 export class SharedAngularMaterialModule implements OnInit {

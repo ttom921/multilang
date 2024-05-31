@@ -9,13 +9,14 @@ import { saveAs } from 'file-saver';
 })
 export class AppComponent {
   title = 'ExceltoJson';
-  flatjson = null;
+  flatjson: any = null;
   //語言數量
-  langlist = [];
-  langjson = {};
+  langlist: any[] = [];
+  langjson: any = {};
+
   //#region ExcelToJson相關
-  onFileExcelChange(ev) {
-    let workBook = null;
+  onFileExcelChange(ev: any) {
+    let workBook: any = null;
     let jsonData = null;
     const reader = new FileReader();
     const file = ev.target.files[0];
@@ -23,7 +24,7 @@ export class AppComponent {
       const data = reader.result;
       //讀excel檔
       workBook = XLSX.read(data, { type: 'binary' });
-      jsonData = workBook.SheetNames.reduce((initial, name) => {
+      jsonData = workBook.SheetNames.reduce((initial: any, name: any) => {
         const sheet = workBook.Sheets[name];
         initial[name] = XLSX.utils.sheet_to_json(sheet);
         return initial;
@@ -34,8 +35,8 @@ export class AppComponent {
       this.langlist = this.getLanguagelist(Sheet1jsondata);
       //console.log(this.langlist);
       this.langlist.forEach(lang => {
-        let keyvalue = {};
-        Sheet1jsondata.forEach(element => {
+        let keyvalue: any = {};
+        Sheet1jsondata.forEach((element: any) => {
           let keyname = Object.getOwnPropertyNames(element)[1];
           let key = element[keyname];
           let value = element[lang];
@@ -54,7 +55,7 @@ export class AppComponent {
   }
   private saveLangJson() {
     this.langlist.forEach(lang => {
-      let jsonlang = flatten.unflatten(this.langjson[lang], { delimiter: '_' })
+      let jsonlang = flatten.unflatten(this.langjson[lang], { delimiter: '/' })
       //console.log(jsonlang);
       let jsonse = JSON.stringify(jsonlang);
       let blob = new Blob([jsonse], { type: "application/json" });
@@ -63,9 +64,9 @@ export class AppComponent {
     });
   }
   //取得語言的數量
-  getLanguagelist(Sheet1jsondata) {
-    let langlist = [];
-    Sheet1jsondata.forEach(element => {
+  getLanguagelist(Sheet1jsondata: any) {
+    let langlist: any[] = [];
+    Sheet1jsondata.forEach((element: any) => {
       let propnames = Object.getOwnPropertyNames(element);
       for (let index = 3; index < propnames.length; index++) {
         const lang = propnames[index];
@@ -77,9 +78,8 @@ export class AppComponent {
     return langlist;
   }
   //#endregion //ExcelToJson相關
-
   //#region JsonToExcel相關
-  onFileJsonChange(ev) {
+  onFileJsonChange(ev: any) {
     const reader = new FileReader();
     const file = ev.target.files[0];
     reader.onload = (e) => {
@@ -92,7 +92,7 @@ export class AppComponent {
     };
     reader.readAsText(file);
   }
-  btnJsonToExcel(ev) {
+  btnJsonToExcel(ev: any) {
     if (this.flatjson == null) return;
     const workBook = XLSX.utils.book_new(); // 創建一個一作簿
     let _excelcellheaders = {
@@ -175,4 +175,3 @@ export class AppComponent {
   }
   //#endregion //測試相關
 }
-

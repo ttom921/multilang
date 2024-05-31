@@ -4,29 +4,37 @@
 //@import "~@angular/material/prebuilt-themes/purple-green.css";
 //@import "~@fortawesome/fontawesome-free/css/all.css";
 //使mat-car有作用
-mat-card{
-  margin:4px;
+mat-card {
+  margin: 4px;
 }
+
 //寬度為填滿
-.full-width{
+.full-width {
   width: 100%;
 }
-html, body, app-root,mat-sidenav-container, .site {
+
+html,
+body,
+app-root,
+mat-sidenav-container,
+.site {
   margin: 0;
   width: 100%;
   height: 100%;
 }
+
 .site {
   display: flex;
   flex-direction: column;
 }
+
 main {
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top:64px;
+  margin-top: 64px;
 }
 
 .fill-remaining-space {
@@ -40,20 +48,27 @@ main {
 .mat-raised-button {
   font-size: 18px;
 }
+
 // .mat-list-base .mat-list-item .mat-line:nth-child(n+2) {
 //   font-size: 18px;
 // }
 .mat-line {
-  font-size: 18px ;
+  font-size: 18px;
 }
+
 .mat-list-base .mat-list-option {
   font-size: 18px;
 }
-.mat-header-cell{
+
+.mat-header-cell {
   font-size: 14px;
 }
-.mat-cell{
+
+.mat-cell {
   font-size: 18px;
 }
 
 //#endregion 以下是自定義字型大小
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
